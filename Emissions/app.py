@@ -12,7 +12,7 @@ from flask import (
 #################################################
 app = Flask(__name__,
             template_folder="templates")
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #################################################
 # Database Setup
 #################################################
@@ -36,8 +36,8 @@ def insights():
     return render_template("/insights.html")
 
 # Query the database and send the jsonified results
-@app.route("/send", methods=["GET", "POST"])
-def send():
+#@app.route("/send", methods=["GET", "POST"])
+#def send():
     #if request.method == "POST":
         #name = request.form["petName"]
         #lat = request.form["petLat"]
@@ -45,10 +45,9 @@ def send():
 
         #pet = Pet(name=name, lat=lat, lon=lon)
         #db.session.add(pet)
-        #db.session.commit()
+        #db.session.commit()om
         #return redirect("/", code=302)
 
     #return render_template("form.html")
-
 if __name__ == "__main__":
     app.run(debug = True)
