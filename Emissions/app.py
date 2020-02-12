@@ -52,7 +52,6 @@ value VARCHAR(120)'''
 @app.route("/")
 def home():
     return render_template("index.html")
- 
 # create route that renders country.html template
 @app.route("/country")
 def country():
