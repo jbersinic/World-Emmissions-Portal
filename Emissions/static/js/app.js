@@ -11,21 +11,28 @@ var tileConfig = {
 attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
 maxZoom: 18,
 id: "mapbox.streets",
-accessToken: "pk.eyJ1IjoiamJlcnNpbmljIiwiYSI6ImNrNXgzdm56ejAxd3kzbWw1ZWdrMTRkOWgifQ.WNwFvtjg1IHKQ-RULtIJkg"
+accessToken: API_KEY
 }
 
 var geoJSONurl = 'static/data/countries.geo.json'
 
-function colorChooser(name) {
-  if (10 <= 10) {
-      return "blue"
-  }
-  else {
-      return "green"
+function colorChooser(countryname,emission) {
+  var max,min,emissionvalue=0;
+  for (i=0;i<emission.length;i++){
+    if (countryname==emission.country[i]){
+      max = Math.max(Number(emission.value))
+      min = Math.min(Number(emission.value))
+      emissionvalue = emission.value[i]
+      if (emissionvalue>=min && emissionvalue<(0.20*max)) {return "green"}
+      else if (emissionvalue>=(0.20*max) && emissionvalue<(0.40*max)) {return "blue"}
+      else if (emissionvalue>=(0.40*max) && emissionvalue<(0.60*max)) {return "yellow"}
+      else if (emissionvalue>=(0.60*max) && emissionvalue<(0.80*max)) {return "orange"}
+      else {return "red"}
+    }
   }
 };
 
-function worldmap(){
+function worldmap(emission){
 
   var map = L.map("map", mapConfig)
   var mapLayer = L.tileLayer(tileURL, tileConfig).addTo(map)
@@ -34,7 +41,7 @@ function worldmap(){
         style: function(feature) {
             return {
                 color: "white",
-                fillColor: colorChooser(feature.properties.name),
+                fillColor: colorChooser(feature.properties.name,emission),
                 fillOpacity: 0.5,
                 weight: 1.5
               };
@@ -54,7 +61,7 @@ function worldmap(){
                         })
                     }
                 });
-                layer.bindPopup("<h1>" + feature.properties.name + "</h1><hr><h2>" + feature.properties.id + "</h2>");
+                layer.bindPopup("<h1>" + feature.properties.name + "</h1><hr><h2>" + feature.id + "</h2>");
         }
     }).addTo(map);
   });
@@ -64,17 +71,17 @@ worldmap();
 
 // creating world emissions line chart
 
-function worldemissions(country,field){
+function worldemissions(emission){
 
   trace1 ={
-    x:country.year,
-    y:country.value,
+    x:emission.year,
+    y:emission.value,
+    text:emission.value ,
     mode:"scatter",
-    
   } 
   ldata1=[trace1];
   layout1 = {
-      title: `${country} ${field} v/s Time`,
+      title: `${emission.country[0]} ${emission.indicator[0]} v/s Time`,
       showlegend: true,
       height: 600,
       width: 1200,
@@ -82,22 +89,35 @@ function worldemissions(country,field){
           title:"Year"
       },
       yaxis: { 
-        title:`${field} (Megatonnes)`
+        title:`${emission.indicator[0]} in ${emission.unit[0]} `
     },
     }
   Plotly.newPlot("scatter",ldata1,layout1)
 
 }
 
-//worldemissions(world);
+// grabbing the Emissions type and year for the world map
+var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
+var fieldYear  = d3.selectAll("#year").property("value")
+var urlworldmap = "/api/emission/World/" + fieldInputWorld + fieldYear
+d3.json(urlworldmap).then(function(response) {
+  worldemissions(response)
+})
+
+// grabbing the field for world graph
+var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
+var urlworldgraph = "/api/emission/World/" + fieldInputWorld
+d3.json(urlworldgraph).then(function(response) {
+  worldemissions(response)
+})
 
 // grabbing the country and field
-
-var country = d3.selectAll("#country").property("value")
-var field = d3.selectAll("#field").property("value")
-
-//creating country specific line chart
-//worldemissions(country,field);
+var countryInput = d3.selectAll("#country").property("value")
+var fieldInput  = d3.selectAll("#field").property("value")
+var urlcountry = "/api/emission/" + countryInput +"/" + fieldInput
+d3.json(urlcountry).then(function(response) {
+  worldemissions(response)
+})
 
 
 
