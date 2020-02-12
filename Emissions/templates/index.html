@@ -21,7 +21,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         
-            <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent"></div>
                 <ul class="navbar-nav ml-auto flex-nowrap">
                 <li class="nav-item active">
                     <a class="nav-link active" href="/">Home</span></a>
@@ -37,42 +37,49 @@
                         </div>
                     </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="data.html">Data</a>
+                    <a class="nav-link" href="/data">Data</a>
                 </li>
-        </ul>
-    </div>
-</nav>
+                </ul>
+        </div>
+        </nav>
     
 <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>How Are We Doing Globally?</h1>
                 <h3>Select a type of index - for example 'Emissions per capita' or 'Solar and Wind share'
-                    <input class="form-control" id="fieldworld" type="text" placeholder="Agriculture activity (meat): consumption">
+                    <input class="form-control" id="country" type="text" placeholder="Agriculture activity (meat): consumption">
                 </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <h3>Select the year - for example '1990' to '2017'
-                    <input class="form-control" id="year" type="text" placeholder="2000">
+                    <input class="form-control" id="field" type="text" placeholder="2000">
                 </h3>
-                <hr>     
-                <article class="worldmap">
-                        <a></a>
-                        </article>
-                        <div id="map"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">     
+                <div id="map"></div>
             </div>    
         </div>
         
-    <div class="container">
         <div class="row">
 
             <div class="col-md-12">
                 <h3>2020 World Emissions Visualization</h3>
-                <hr>            
+            </div>
+        </div>
+        <div class="row">
+
+        <div class="col-md-12">
                 <article class="worldemissions">
-                        <a></a>
                         <p><em> Graph of world emissions here </em></p>
                         </article>
-                        <div id="scatter"></div>
-            </div>    
+                <div id="scatter"></div>
+            </div>
+        </div>    
     </div>  
 </div>
 </div>
@@ -90,6 +97,7 @@
 <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{{ url_for('static', filename='js/config.js') }}"></script>
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 

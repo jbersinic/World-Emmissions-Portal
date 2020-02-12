@@ -52,6 +52,19 @@ value VARCHAR(120)'''
 @app.route("/")
 def home():
     return render_template("index.html")
+ 
+# create route that renders country.html template
+@app.route("/country")
+def country():
+    return render_template("/country.html")
+# create route that renders insights.html template
+@app.route("/insights")
+def insights():
+    return render_template("/insights.html")
+# create route that renders data.html template
+@app.route("/data")
+def data():
+    return render_template("/data.html")
 
 # for the graph on Country page
 @app.route("/api/emission/<grabcountry>/<grabindicator>")
