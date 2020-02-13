@@ -29,9 +29,9 @@ inspector = inspect(engine)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 #Base.classes.keys()
-Emissions = Base.classes.raw_data
+Emissions = Base.classes.raw_data2
 #inspector.get_table_names()
-raw_data_columns = inspector.get_columns('raw_data')
+raw_data_columns = inspector.get_columns('raw_data2')
 #for column in raw_data_columns : print(column['name'], column['type'])
 
 ''' below is the DB structure'''
@@ -102,15 +102,15 @@ def worldgraph(grabindicator):
     return jsonify(emission_data)
 
 # for the World Map on the Home page 
+#/api/emission/wholeworld/Emissions_per_capita/2000
 @app.route("/api/emission/wholeworld/<grabyear>/<grabindicator>")
 def worldmap (grabyear,grabindicator):
     session = Session(engine)
     results = session.query(Emissions.indicator, Emissions.unit,Emissions.country,Emissions.year,Emissions.value).\
         filter(grabyear == Emissions.year).\
         filter(grabindicator == Emissions.indicator).all()
-
     emission_data = [{
-        "indicator": results[0],
+        "indicator": results.indicator,
         "unit": results[1],
         "country": results[2],
         "year": results[3],

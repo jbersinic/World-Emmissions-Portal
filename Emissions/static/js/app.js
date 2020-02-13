@@ -96,28 +96,18 @@ function worldemissions(emission){
 }
 
 // grabbing the Emissions type and year for the world map
-var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
-var fieldYear  = d3.selectAll("#year").property("value")
-var urlworldmap = "/api/emission/World/" + fieldInputWorld + fieldYear
-d3.json(urlworldmap).then(function(response) {
-  worldemissions(response)
+d3.select("#year").on("change",grabberhome)
+function grabberhome(){
+  var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
+  var fieldYear  = d3.selectAll("#year").property("value")
+  var urlworldmap = "/api/emission/wholeworld/" + fieldYear + "/" + fieldInputWorld 
+  d3.json(urlworldmap).then(function(response) {
+    worldemissions(response)
+  })
+  // grabbing the field for world graph
+  var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
+  var urlworldgraph = "/api/emission/World/" + fieldInputWorld
+  d3.json(urlworldgraph).then(function(response) {
+    worldemissions(response)
 })
-
-// grabbing the field for world graph
-var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
-var urlworldgraph = "/api/emission/World/" + fieldInputWorld
-d3.json(urlworldgraph).then(function(response) {
-  worldemissions(response)
-})
-
-// grabbing the country and field
-var countryInput = d3.selectAll("#country").property("value")
-var fieldInput  = d3.selectAll("#field").property("value")
-var urlcountry = "/api/emission/" + countryInput +"/" + fieldInput
-d3.json(urlcountry).then(function(response) {
-  worldemissions(response)
-})
-
-
-
-
+}
