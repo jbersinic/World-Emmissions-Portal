@@ -1,0 +1,95 @@
+html, body {
+    height: 100%;
+}
+
+.navbar {
+    min-height: 100px;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.navbar-toggler {
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+
+h1 {
+    font-size: 35px;
+    color: rgb(55, 59, 59);
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+h2 {
+    font-size: 25px;
+    color: cadetblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+h3 {
+    font-size: 20px;
+    color: rgb(84, 138, 139);
+    text-align: left;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+p {
+    font-size: 15px;
+    color: rgb(67, 70, 70);
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    background-color: rgb(19, 206, 206);
+    flex-shrink: 1;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.pagecontainer {
+    padding: 60px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color:gainsboro;
+}
+body {
+    background-color:whitesmoke;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+  
+
+/*.pic_size {
+    min-width: 50px;
+}
+.visuals {
+    display:flex;
+    flex-flow: row wrap;
+}
+
+.textpadding {
+    padding-top: 5px; 
+    padding-left: initial;
+}
+.visuals article {
+    min-width: 50%;
+    flex: 1;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .visuals {
+      flex-flow: row nowrap;
+    }
+}
+
