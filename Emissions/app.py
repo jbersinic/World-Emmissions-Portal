@@ -130,7 +130,6 @@ def worldgraph(grabindicator):
     return jsonify(emission_data)
 
 # for the World Map on the Home page 
-#/api/emission/wholeworld/Emissions_per_capita/2000
 @app.route("/api/emission/wholeworld/<grabyear>/<grabindicator>")
 def worldmap (grabyear,grabindicator):
     session = Session(engine)

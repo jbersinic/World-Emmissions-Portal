@@ -32,7 +32,7 @@ function colorChooser(countryname,emission) {
 };
 
 function worldmap(emission){
-
+  console.log(emission)
   var map = L.map("map", mapConfig)
   var mapLayer = L.tileLayer(tileURL, tileConfig).addTo(map)
   d3.json(geoJSONurl, function(data) {
@@ -40,7 +40,7 @@ function worldmap(emission){
         style: function(feature) {
             return {
                 color: "white",
-                fillColor: colorChooser(feature.properties.name,emission),
+                fillColor: colorChooser(feature.properties.name,emission[0]),
                 fillOpacity: 0.5,
                 weight: 1.5
               };
@@ -66,12 +66,10 @@ function worldmap(emission){
   });
 
 }
-//worldmap();
-
 // creating world emissions line chart
 
 function worldemissions(emission){
-  console.log(emission[0].year)
+  
   trace1 ={
     x:emission[0].year,
     y:emission[0].value,
@@ -99,18 +97,18 @@ function worldemissions(emission){
 d3.select("#homebutton").on("click",grabberhome)
 function grabberhome(){
   var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
-  // var fieldYear  = d3.selectAll("#year").property("value")
-  // var urlworldmap = "/api/emission/wholeworld/" + fieldYear + "/" + fieldInputWorld
-  // console.log(urlworldmap) 
-  // d3.json(urlworldmap).then(function(response){
-  //   worldemissions(response)
-  // });
+  var fieldYear  = d3.selectAll("#year").property("value")
+  var urlworldmap = "/api/emission/wholeworld/" + fieldYear + "/" + fieldInputWorld
+  console.log(urlworldmap) 
+  d3.json(urlworldmap).then(function(response){
+    worldmap(response)
+  });
 // grabbing the field for world graph
-var urlworldgraph = "/api/emission/World/" + fieldInputWorld
-console.log(urlworldgraph)
-d3.json(urlworldgraph).then(function(response) {
-  worldemissions(response)
-})
+  var urlworldgraph = "/api/emission/World/" + fieldInputWorld
+  console.log(urlworldgraph)
+  d3.json(urlworldgraph).then(function(response) {
+    worldemissions(response)
+  })
 }
 
 /*
