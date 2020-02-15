@@ -32,7 +32,6 @@ function colorChooser(countryname,emission) {
 };
 
 function worldmap(emission){
-  console.log(emission)
   var map = L.map("map", mapConfig)
   var mapLayer = L.tileLayer(tileURL, tileConfig).addTo(map)
   d3.json(geoJSONurl, function(data) {
