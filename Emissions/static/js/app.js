@@ -91,6 +91,24 @@ function worldemissions(emission){
   Plotly.newPlot("scatter",ldata1,layout1,{responsive:true})
 }
 
+//putting options in the dropdown
+d3.select("#populate").on("click",populate)
+function populate(){
+  d3.json("/alldata").then(function(data){
+    for (i=0;i<(data[0].indicator).length;i++){
+      d3.select("#fieldworld").append("option").attr("value",(data[0].indicator[i])).text(data[0].indicator[i])
+      d3.select("#field").append("option").attr("value",(data[0].indicator[i])).text(data[0].indicator[i])
+    }
+    for (j=0;j<(data[0].country).length;j++){
+      d3.select("#country").append("option").attr("value",(data[0].country[j])).text(data[0].country[j])
+    }
+    for (k=0;k<(data[0].year).length;k++){
+      d3.select("#year").append("option").attr("value",(data[0].year[k])).text(data[0].year[k])
+    }
+  })
+  
+}
+
 // grabbing the Emissions type and year for the world map
 d3.select("#homebutton").on("click",grabberhome)
 function grabberhome(){
@@ -108,6 +126,8 @@ function grabberhome(){
     worldemissions(response)
   })
 }
+
+
 
 /*
 * 

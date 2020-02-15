@@ -47,27 +47,29 @@
     
     <div class="container">
             <div class="row">
+            <div class="col-md-12"></div>
               <h1>Emission Results by Country</h1>
-              <hr>
-              </div>
+            </div>
+            </div>
     </div>
     
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Select any G20 country to see most recent data
-                    <input class="form-control" id="country" type="text" placeholder="Canada or Mexico">
-                </h3>
-                <hr>   
+                <div>
+                    <button id="populate">Populate my options </button>
+                    <h3>Select any G20 country to see most recent data</h3>
+                    <p><select id="country"></select></p>
+                </div>
             </div>
         </div>    
         <div class="row">
             <div class="col-md-12">           
-                <h3>Select a type of index - for example 'Emissions per capita' or 'Solar and Wind share'
-                    <input class="form-control" id="field" type="text" placeholder="Oil and Gas emissions">
-                    <hr>
-                    <button id="countrybutton"> Show </button>
-                </h3>
+                <div>
+                    <h3>Select a type of index - for example 'Emissions per capita'</h3>
+                    <p><select id="field"></select></p>
+                </div>         
+                <button id="countrybutton"> Show </button>
             </div>
         </div>
     
