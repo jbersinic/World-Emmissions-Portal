@@ -32,7 +32,6 @@ function colorChooser(countryname,emission) {
 };
 
 function worldmap(emission){
-  console.log(emission)
   var map = L.map("map", mapConfig)
   var mapLayer = L.tileLayer(tileURL, tileConfig).addTo(map)
   d3.json(geoJSONurl, function(data) {
@@ -80,8 +79,8 @@ function worldemissions(emission){
   layout1 = {
       title: `${emission[0].country[0]} ${emission[0].indicator[0]} v/s Time`,
       showlegend: true,
-      height: 600,
-      width: 1200,
+      /*height: 600,
+      width: 1200,*/
       xaxis: { 
           title:"Year"
       },
@@ -89,8 +88,7 @@ function worldemissions(emission){
         title:`${emission[0].indicator[0]} in ${emission[0].unit[0]} `
     },
     }
-  Plotly.newPlot("scatter",ldata1,layout1)
-
+  Plotly.newPlot("scatter",ldata1,layout1,{responsive:true})
 }
 
 //putting options in the dropdown
