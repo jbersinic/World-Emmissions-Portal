@@ -64,7 +64,27 @@ def insights():
 @app.route("/data")
 def data():
     return render_template("/data.html")
-
+# create route that gets all the data
+@app.route("/alldata")
+def alldata():
+    session = Session(engine)
+    results = session.query(Emissions.indicator,Emissions.country,Emissions.year).all()
+    indicator=[]
+    country=[]
+    year=[]
+    for i in results:
+        indicator.append(i[0])
+        country.append(i[1])
+        year.append(i[2])
+    indicator = list( dict.fromkeys(indicator))
+    country = list( dict.fromkeys(country))
+    year = list( dict.fromkeys(year))
+    emission_data = [{
+        "indicator": indicator,
+        "country": country,
+        "year": year,
+    }]
+    return jsonify(emission_data)
 # for the graph on Country page
 @app.route("/api/emission/<grabcountry>/<grabindicator>")
 def countrygraph(grabcountry,grabindicator):
