@@ -85,8 +85,8 @@ function countryemissions(emission){
       x:projectedemission[0].year,
       y:projectedemission[0].value,
       text:projectedemission[0].value ,
-      mode:"scatter",
-      name:"Projected"
+      mode:"markers",
+      name:"Projected",
   }
 
   ldata1=[trace1,trace2];
