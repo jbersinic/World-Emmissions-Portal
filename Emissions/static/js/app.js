@@ -79,8 +79,8 @@ function worldemissions(emission){
   layout1 = {
       title: `${emission[0].country[0]} ${emission[0].indicator[0]} v/s Time`,
       showlegend: true,
-      height: 600,
-      width: 1200,
+      /*height: 600,
+      width: 1200,*/
       xaxis: { 
           title:"Year"
       },
@@ -88,8 +88,7 @@ function worldemissions(emission){
         title:`${emission[0].indicator[0]} in ${emission[0].unit[0]} `
     },
     }
-  Plotly.newPlot("scatter",ldata1,layout1)
-
+  Plotly.newPlot("scatter",ldata1,layout1,{responsive:true})
 }
 
 // grabbing the Emissions type and year for the world map
