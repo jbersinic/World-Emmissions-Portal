@@ -69,16 +69,31 @@ def data():
 @app.route("/api/emission/<grabcountry>/<grabindicator>")
 def countrygraph(grabcountry,grabindicator):
     session = Session(engine)
-    results = session.query(Emissions.indicator, Emissions.unit,Emissions.country,Emissions.year,Emissions.value).\
+    results = session.query(Emissions.indicator, Emissions.unit,Emissions.country,Emissions.year,Emissions.value,Emissions.variable).\
         filter(grabindicator == Emissions.indicator).\
         filter(grabcountry == Emissions.country).all()
 
+    indicator=[]
+    unit=[]
+    country=[]
+    year=[]
+    value=[]
+    variable=[]
+    for i in results:
+        indicator.append(i[0])
+        unit.append(i[1])
+        country.append(i[2])
+        year.append(i[3])
+        value.append(i[4])
+        variable.append(i[5])
+
     emission_data = [{
-        "indicator": results[0],
-        "unit": results[1],
-        "country": results[2],
-        "year": results[3],
-        "value": results[4],
+        "indicator": indicator,
+        "unit": unit,
+        "country": country,
+        "year": year,
+        "value": value,
+        "variable":variable
     }]
 
     return jsonify(emission_data)
@@ -91,30 +106,55 @@ def worldgraph(grabindicator):
         filter(grabindicator == Emissions.indicator).\
         filter("World" == Emissions.country).all()
 
+    indicator=[]
+    unit=[]
+    country=[]
+    year=[]
+    value=[]
+    for i in results:
+        indicator.append(i[0])
+        unit.append(i[1])
+        country.append(i[2])
+        year.append(i[3])
+        value.append(i[4])
+
+
     emission_data = [{
-        "indicator": results[0],
-        "unit": results[1],
-        "country": results[2],
-        "year": results[3],
-        "value": results[4],
+        "indicator": indicator,
+        "unit": unit,
+        "country": country,
+        "year": year,
+        "value": value
     }]
 
     return jsonify(emission_data)
 
 # for the World Map on the Home page 
-#/api/emission/wholeworld/Emissions_per_capita/2000
 @app.route("/api/emission/wholeworld/<grabyear>/<grabindicator>")
 def worldmap (grabyear,grabindicator):
     session = Session(engine)
     results = session.query(Emissions.indicator, Emissions.unit,Emissions.country,Emissions.year,Emissions.value).\
         filter(grabyear == Emissions.year).\
         filter(grabindicator == Emissions.indicator).all()
+    indicator=[]
+    unit=[]
+    country=[]
+    year=[]
+    value=[]
+    for i in results:
+        indicator.append(i[0])
+        unit.append(i[1])
+        country.append(i[2])
+        year.append(i[3])
+        value.append(i[4])
+
+
     emission_data = [{
-        "indicator": results.indicator,
-        "unit": results[1],
-        "country": results[2],
-        "year": results[3],
-        "value": results[4],
+        "indicator": indicator,
+        "unit": unit,
+        "country": country,
+        "year": year,
+        "value": value
     }]
 
     return jsonify(emission_data)

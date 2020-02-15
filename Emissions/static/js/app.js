@@ -32,7 +32,6 @@ function colorChooser(countryname,emission) {
 };
 
 function worldmap(emission){
-
   var map = L.map("map", mapConfig)
   var mapLayer = L.tileLayer(tileURL, tileConfig).addTo(map)
   d3.json(geoJSONurl, function(data) {
@@ -40,7 +39,7 @@ function worldmap(emission){
         style: function(feature) {
             return {
                 color: "white",
-                fillColor: colorChooser(feature.properties.name,emission),
+                fillColor: colorChooser(feature.properties.name,emission[0]),
                 fillOpacity: 0.5,
                 weight: 1.5
               };
@@ -66,21 +65,19 @@ function worldmap(emission){
   });
 
 }
-worldmap();
-
 // creating world emissions line chart
 
 function worldemissions(emission){
-
+  
   trace1 ={
-    x:emission.year,
-    y:emission.value,
-    text:emission.value ,
+    x:emission[0].year,
+    y:emission[0].value,
+    text:emission[0].value ,
     mode:"scatter",
   } 
   ldata1=[trace1];
   layout1 = {
-      title: `${emission.country[0]} ${emission.indicator[0]} v/s Time`,
+      title: `${emission[0].country[0]} ${emission[0].indicator[0]} v/s Time`,
       showlegend: true,
       height: 600,
       width: 1200,
@@ -88,7 +85,7 @@ function worldemissions(emission){
           title:"Year"
       },
       yaxis: { 
-        title:`${emission.indicator[0]} in ${emission.unit[0]} `
+        title:`${emission[0].indicator[0]} in ${emission[0].unit[0]} `
     },
     }
   Plotly.newPlot("scatter",ldata1,layout1)
@@ -96,18 +93,25 @@ function worldemissions(emission){
 }
 
 // grabbing the Emissions type and year for the world map
-d3.select("#year").on("change",grabberhome)
+d3.select("#homebutton").on("click",grabberhome)
 function grabberhome(){
   var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
   var fieldYear  = d3.selectAll("#year").property("value")
-  var urlworldmap = "/api/emission/wholeworld/" + fieldYear + "/" + fieldInputWorld 
-  d3.json(urlworldmap).then(function(response) {
-    worldemissions(response)
-  })
-  // grabbing the field for world graph
-  var fieldInputWorld  = d3.selectAll("#fieldworld").property("value")
+  var urlworldmap = "/api/emission/wholeworld/" + fieldYear + "/" + fieldInputWorld
+  console.log(urlworldmap) 
+  d3.json(urlworldmap).then(function(response){
+    worldmap(response)
+  });
+// grabbing the field for world graph
   var urlworldgraph = "/api/emission/World/" + fieldInputWorld
+  console.log(urlworldgraph)
   d3.json(urlworldgraph).then(function(response) {
     worldemissions(response)
-})
+  })
 }
+
+/*
+* 
+* Credits to https://css-tricks.com/long-dropdowns-solution/
+*
+*/
