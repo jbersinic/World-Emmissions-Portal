@@ -1,3 +1,16 @@
+d3.select("#populate").on("click",populate)
+function populate(){
+  d3.json("/alldata").then(function(data){
+    for (i=0;i<(data[0].indicator).length;i++){
+      d3.select("#field").append("option").attr("value",(data[0].indicator[i])).text(data[0].indicator[i])
+    }
+    for (j=0;j<(data[0].country).length;j++){
+      d3.select("#country").append("option").attr("value",(data[0].country[j])).text(data[0].country[j])
+    }
+  })
+  
+}
+
 // grabbing the country and field
 d3.select("#countrybutton").on("click",grabber)
 function grabber(){
@@ -6,11 +19,11 @@ function grabber(){
   var urlcountry = "/api/emission/" + countryInput +"/" + fieldInput
   console.log(urlcountry)
   d3.json(urlcountry).then(function(response) {
-    worldemissions(response)
+    countryemissions(response)
   })
 }
 
-function worldemissions(emission){
+function countryemissions(emission){
   
   historicemissioncountry=[]
   historicemissionindicator=[]
