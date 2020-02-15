@@ -23,19 +23,20 @@
     integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
     crossorigin=""></script>
     
+    
 </head>
-
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Climate Change is Real</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         
-            <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent"></div>
+            <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto flex-nowrap">
                 <li class="nav-item active">
-                    <span><a class="nav-link active" href="/">Home</a></span>
+                    <span><a class="nav-link active" href="#">Home</a></span>
                 </li>
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,20 +52,21 @@
                     <a class="nav-link" href="/data">Data</a>
                 </li>
                 </ul>
-        </nav>
-    
+                </div>
+            </nav>
+            <div class="hero-image"></div>
 <div class="container">
-    
-        <div class="row">
-            <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">  
                 <h1>How Are We Doing Globally?</h1>
                 <h3>Select a type of index - for example 'Emissions per capita' or 'Solar and Wind share'
                     <input class="form-control" id="fieldworld" type="text" placeholder="Agriculture activity (meat): consumption">
                 </h3>
-            </div>
         </div>
+    </div> 
+
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12"> 
                 <h3>Select the year - for example '1990' to '2017'
                     <input class="form-control" id="year" type="text" placeholder="2000">
                     <hr>
@@ -72,26 +74,21 @@
                 </h3>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-12">     
-                <div id="map"></div>
-            </div>    
-        </div>
-        
-        <div class="row">
 
-            <div class="col-md-12">
+        <div class="row"> 
+                <div id="map"></div> 
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">  
                 <h3>2020 World Emissions Visualization</h3>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-12">
+
                 <div id="scatter"></div>
-            </div>
-        </div>    
-    </div>  
+    
+</div>  
+
     <footer class="page-footer font-small blue">
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
           <a> Climate Change Is Real Inc.</a>
