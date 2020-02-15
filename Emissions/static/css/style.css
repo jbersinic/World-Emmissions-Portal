@@ -1,9 +1,9 @@
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 .navbar {
-    min-height: 80px;
     font-size: 15px;
 }
 
@@ -18,7 +18,20 @@ html, body {
 .navbar-toggler {
     padding: 9px 10px !important;
 }
-
+/* The hero image */
+.hero-image {
+    background-image: url("../images/climate.png");
+    height: 100vh;
+    max-height: 250px;
+    min-height: 140px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    
+  }
+  
 h1 {
     padding: 10px; 
     font-size: 35px;
