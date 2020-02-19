@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+
   </head>
 
 <body>
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto flex-nowrap">
                 <li class="nav-item active">
-                    <span><a class="nav-link active" href="#">Data</a></span>
+                    <span><a class="nav-link active" href="#">Articles</a></span>
                 </li>
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,11 +32,12 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="/"> Home </a>
                           <a class="dropdown-item" href="/country">Results by Country</a>
-                          <a class="dropdown-item" href="/insights">Coverage & Info</a>
-                        </div>
+                          <a class="dropdown-item" href="/insights">Related Videos</a>
+                          <a class="dropdown-item" href="/articles">Current Articles</a>
+                      </div>
                     </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/articles">Articles</a>
+                    <a class="nav-link active" href="/data">Data</a>
                 </li>
             </ul>
         </div>
@@ -48,65 +49,91 @@
         <hr>
       </div>
       <hr> 
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div>
-                <button id="populate">Populate my options </button>
-                <h3>Select any G20 country to see most recent data</h3>
-                <p><select id="country"></select></p>
-            </div>
-        </div>
-    </div>    
-    <div class="row">
-        <div class="col-md-12">           
-            <div>
-                <h3>Select a year for the news'</h3>
-                <p><select id="year"></select></p>
-            </div>         
-            <button id="shownews"> Show </button>
-        </div>
-    </div>
-    </div>
       <div class="row">
+        <p>These are the most recent articles in reference to Emissions News.</p>
+      </div>
+        <div class="table-responsive-md">
         <div class="table table-bordered table-dark table-striped">
         
           <table border="1" class="dataframe">
             <thead>
-              <tr style="text-align: centre">
+              <tr style="text-align: right;">
                 <th></th>
                 <th>Articles</th>
                 <th>Links</th>
               </tr>
             </thead>
             <tbody>
-              
+              <tr>
+                <th>0</th>
+                <td>[PDF] Trends in global CO2-emissions. 2016 Report - EDGAR - Europa EU</td>
+                <td>https://edgar.jrc.ec.europa.eu/news_docs/jrc-2016-trends-in-global-co2-emissions-2016-report-103425.pdf&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAAegQIBBAB&amp;usg=AOvVaw30qaAHOOdrOk1zdZoHd1mW</td>
+              </tr>
+              <tr>
+                <th>1</th>
+                <td>[PDF] CO2 emissions from cars - Transport &amp; Environment</td>
+                <td>https://www.transportenvironment.org/sites/te/files/publications/2018_04_CO2_emissions_cars_The_facts_report_final_0_0.pdf&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAJegQICRAB&amp;usg=AOvVaw2kdMShM_iWGLfwhCUkpuDI</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>Pollution from Fossil-Fuel Combustion is the Leading Environmental ...</td>
+                <td>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5800116/&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAKegQIBxAB&amp;usg=AOvVaw1_Npzp8EnfYKQ3UvvwrNyq</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>Major challenges of integrating agriculture into climate change ...</td>
+                <td>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6054014/&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjALegQICxAB&amp;usg=AOvVaw2i0QSqeIUUh3ct0Qfxc6Zs</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>International and national climate policies for aviation: a review ...</td>
+                <td>https://www.tandfonline.com/doi/full/10.1080/14693062.2018.1562871&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAMegQIBhAB&amp;usg=AOvVaw2MxaHtqkK0v7jlrM8pFGwU</td>
+              </tr>
+              <tr>
+                <th>5</th>
+                <td>Impacts of nationally determined contributions on 2030 global ...</td>
+                <td>https://iopscience.iop.org/article/10.1088/1748-9326/aaa0b9&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjANegQIAxAB&amp;usg=AOvVaw2DRqD4_HV6p662kD2HDa1t</td>
+              </tr>
+              <tr>
+                <th>6</th>
+                <td>Summary for Policymakers of IPCC Special Report on Global ...</td>
+                <td>https://www.ipcc.ch/2018/10/08/summary-for-policymakers-of-ipcc-special-report-on-global-warming-of-1-5c-approved-by-governments/&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAOegQIARAB&amp;usg=AOvVaw052MgN91PbSAOhwQbR0M_q</td>
+              </tr>
+              <tr>
+                <th>7</th>
+                <td>Corsia: The UN's plan to 'offset' growth in aviation emissions after 2020</td>
+                <td>https://www.carbonbrief.org/corsia-un-plan-to-offset-growth-in-aviation-emissions-after-2020&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAPegQIAhAB&amp;usg=AOvVaw18B03uB_8bLb4Z1ec9g22j</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>Measuring greenhouse gas emissions from international air travel of ...</td>
+                <td>https://www.sciencedirect.com/science/article/pii/S0195925517303116&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjAQegQIBRAB&amp;usg=AOvVaw1PEmZlVvUARzobljFwTGgG</td>
+              </tr>
+              <tr>
+                <th>9</th>
+                <td>Forecasting of CO2 emissions in Iran based on time series and ...</td>
+                <td>https://www.sciencedirect.com/science/article/pii/S2352484719301088&amp;sa=U&amp;ved=2ahUKEwiUoZf2tdznAhVMyKYKHbC4DBkQFjARegQICBAB&amp;usg=AOvVaw11JaP3E9lGf3n-S7vgXVph</td>
+              </tr>
             </tbody>
           </table>
-        </div>
-        </div>
-      </div>
-    </div>
-          
-        <footer class="page-footer font-small blue">
-          <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a> Climate Change Is Real Inc.</a>
           </div>
-      </footer>
+          </div>
+        </div>
+          <footer class="page-footer font-small blue">
+            <div class="footer-copyright text-center py-3">© 2020 Copyright:
+              <a> Climate Change Is Real Inc.</a>
+            </div>
+        </footer>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script type="text/javascript" src="../static/js/articles.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+      </body>
 
-</html>
+      </html>

@@ -103,6 +103,9 @@ body {
     padding: 5px;
 }
 
+#fieldworld {
+    width: 300px
+}
 /* @media only screen and (max-width: 600px) {
     .visuals {
       flex-flow: row nowrap;
