@@ -64,6 +64,9 @@ def insights():
 @app.route("/data")
 def data():
     return render_template("/data.html")
+@app.route("/articles")
+def articles():
+    return render_template("/articles.html")
 # create route that gets all the data
 @app.route("/alldata")
 def alldata():
