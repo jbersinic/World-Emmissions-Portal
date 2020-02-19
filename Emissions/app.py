@@ -64,6 +64,9 @@ def insights():
 @app.route("/data")
 def data():
     return render_template("/data.html")
+@app.route("/articles")
+def articles():
+    return render_template("/articles.html")
 # create route that gets all the data
 @app.route("/alldata")
 def alldata():
@@ -179,6 +182,41 @@ def worldmap (grabyear,grabindicator):
 
     return jsonify(emission_data)
 
+@app.route("/api/news/<grabyear>/<grabcountry>")
+def news (grabyear,grabcountry):
+
+    import requests
+    from bs4 import BeautifulSoup as b
+    import pandas as pd
+    import webbrowser
+
+    Country = grabcountry
+    Before = grabyear
+    url = f"https://www.google.co.in/search?q=+{Country}+co2+emissions+scholarly+articles+before:+{Before}"
+    print (url)
+    response = requests.get(url)
+
+    soup = b(response.text,"lxml")
+    articles=[]
+    r = soup.find_all('div', attrs = {'class': 'BNeawe vvjwJb AP7Wnd'})
+    for i in range(len(r)):
+        articles.append(r[i].text)
+
+    urls = soup.find_all('div', attrs = {'class': 'kCrYT'})
+    Links=[]
+    for link in urls:
+        href = link.find('a')
+        try:
+            raw_website = href.get('href')
+            clean_web = raw_website[7:]
+            Links.append(clean_web)
+        except:
+            continue
+    newsdata = [{
+        "articles": articles,
+        "links": Links
+    }]
+    return jsonify(newsdata)
 
 if __name__ == "__main__":
     app.run()
