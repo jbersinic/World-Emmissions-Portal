@@ -67,7 +67,7 @@ def data():
 @app.route("/articles")
 def articles():
     return render_template("/articles.html")
-# create route that gets all the data
+# create route that gets all the data for the filters
 @app.route("/alldata")
 def alldata():
     session = Session(engine)
