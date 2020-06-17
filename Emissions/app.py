@@ -28,7 +28,7 @@ connection = engine.connect()
 inspector = inspect(engine)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
-#Base.classes.keys()
+#Base.classes.keys() for base class
 Emissions = Base.classes.raw_data2
 #inspector.get_table_names()
 raw_data_columns = inspector.get_columns('raw_data2')
