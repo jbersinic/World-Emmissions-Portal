@@ -34,7 +34,7 @@ Emissions = Base.classes.raw_data2
 raw_data_columns = inspector.get_columns('raw_data2')
 #for column in raw_data_columns : print(column['name'], column['type'])
 
-''' below is the DB structure'''
+''' below is DB structure'''
 #-----------------#
 '''sector VARCHAR(120)
 indicator VARCHAR(120)
