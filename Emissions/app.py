@@ -17,7 +17,7 @@ app = Flask(__name__, static_url_path='/static' )
 #################################################
 
 
-#import psycopg2 if required
+#import psycopg2 
 
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
